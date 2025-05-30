@@ -29,6 +29,16 @@ import StudentCommunication from "./pages/student/Communication";
 import AdminDashboard from "./pages/admin/Dashboard";
 import UserManagement from "./pages/admin/UserManagement";
 
+// Teacher pages
+import TeacherDashboard from "./pages/teacher/Dashboard";
+import TeacherClasses from "./pages/teacher/Classes";
+import TeacherAttendance from "./pages/teacher/Attendance";
+import TeacherGrades from "./pages/teacher/Grades";
+import TeacherBehavior from "./pages/teacher/Behavior";
+import TeacherMaterials from "./pages/teacher/Materials";
+import TeacherReports from "./pages/teacher/Reports";
+import TeacherProfile from "./pages/teacher/Profile";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -62,6 +72,16 @@ const App = () => (
               {/* Admin routes */}
               <Route path="/admin/dashboard" element={<DynamicLayout userType="admin"><AdminDashboard /></DynamicLayout>} />
               <Route path="/admin/users" element={<DynamicLayout userType="admin"><UserManagement /></DynamicLayout>} />
+              
+              {/* Teacher routes */}
+              <Route path="/teacher/dashboard" element={<DynamicLayout userType="teacher"><TeacherDashboard /></DynamicLayout>} />
+              <Route path="/teacher/classes" element={<DynamicLayout userType="teacher"><TeacherClasses /></DynamicLayout>} />
+              <Route path="/teacher/attendance" element={<DynamicLayout userType="teacher"><TeacherAttendance /></DynamicLayout>} />
+              <Route path="/teacher/grades" element={<DynamicLayout userType="teacher"><TeacherGrades /></DynamicLayout>} />
+              <Route path="/teacher/behavior" element={<DynamicLayout userType="teacher"><TeacherBehavior /></DynamicLayout>} />
+              <Route path="/teacher/materials" element={<DynamicLayout userType="teacher"><TeacherMaterials /></DynamicLayout>} />
+              <Route path="/teacher/reports" element={<DynamicLayout userType="teacher"><TeacherReports /></DynamicLayout>} />
+              <Route path="/teacher/profile" element={<DynamicLayout userType="teacher"><TeacherProfile /></DynamicLayout>} />
               
               <Route path="*" element={<NotFound />} />
             </Routes>

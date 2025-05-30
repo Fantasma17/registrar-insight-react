@@ -3,6 +3,7 @@ import React from 'react';
 import { AppSidebar } from './AppSidebar';
 import { StudentSidebar } from './StudentSidebar';
 import { AdminSidebar } from './AdminSidebar';
+import { TeacherSidebar } from './TeacherSidebar';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Bell, Mail, User } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -10,7 +11,7 @@ import { Badge } from '@/components/ui/badge';
 
 interface DynamicLayoutProps {
   children: React.ReactNode;
-  userType: 'director' | 'student' | 'admin';
+  userType: 'director' | 'student' | 'admin' | 'teacher';
 }
 
 const DynamicLayout = ({ children, userType }: DynamicLayoutProps) => {
@@ -20,6 +21,8 @@ const DynamicLayout = ({ children, userType }: DynamicLayoutProps) => {
         return <StudentSidebar />;
       case 'admin':
         return <AdminSidebar />;
+      case 'teacher':
+        return <TeacherSidebar />;
       default:
         return <AppSidebar />;
     }
@@ -31,6 +34,8 @@ const DynamicLayout = ({ children, userType }: DynamicLayoutProps) => {
         return 'Portal del Estudiante';
       case 'admin':
         return 'Panel de Administración';
+      case 'teacher':
+        return 'Portal del Maestro';
       default:
         return 'Sistema de Gestión Escolar';
     }
@@ -42,8 +47,23 @@ const DynamicLayout = ({ children, userType }: DynamicLayoutProps) => {
         return 'Área del Estudiante';
       case 'admin':
         return 'Administrador del Sistema';
+      case 'teacher':
+        return 'Área del Maestro';
       default:
         return 'Panel Administrativo - Director';
+    }
+  };
+
+  const getUserName = () => {
+    switch (userType) {
+      case 'student':
+        return 'Ana García';
+      case 'admin':
+        return 'Admin Principal';
+      case 'teacher':
+        return 'Prof. María González';
+      default:
+        return 'Director Principal';
     }
   };
 
@@ -83,9 +103,7 @@ const DynamicLayout = ({ children, userType }: DynamicLayoutProps) => {
                   </AvatarFallback>
                 </Avatar>
                 <div className="hidden md:block">
-                  <p className="text-sm font-medium text-gray-900">
-                    {userType === 'student' ? 'Ana García' : userType === 'admin' ? 'Admin Principal' : 'Director Principal'}
-                  </p>
+                  <p className="text-sm font-medium text-gray-900">{getUserName()}</p>
                   <p className="text-xs text-gray-600">En línea</p>
                 </div>
               </div>

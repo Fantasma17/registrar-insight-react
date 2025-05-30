@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { GraduationCap, User, Shield, Users } from 'lucide-react';
+import { GraduationCap, User, Shield, Users, BookOpen } from 'lucide-react';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -16,6 +16,14 @@ const Index = () => {
       color: 'bg-blue-600 hover:bg-blue-700',
       path: '/dashboard',
       features: ['Gestión de Matrícula', 'Documentos Oficiales', 'Control de Expedientes', 'Reportes Administrativos']
+    },
+    {
+      title: 'Maestro',
+      description: 'Portal del maestro con gestión de clases, calificaciones y material didáctico',
+      icon: BookOpen,
+      color: 'bg-purple-600 hover:bg-purple-700',
+      path: '/teacher/dashboard',
+      features: ['Gestión de Clases', 'Control de Asistencia', 'Calificaciones', 'Material Didáctico']
     },
     {
       title: 'Estudiante',
@@ -37,7 +45,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex items-center justify-center p-6">
-      <div className="max-w-6xl w-full">
+      <div className="max-w-7xl w-full">
         <div className="text-center mb-12">
           <div className="flex justify-center mb-6">
             <div className="bg-blue-600 p-4 rounded-full">
@@ -49,7 +57,7 @@ const Index = () => {
           <p className="text-gray-500">Selecciona tu tipo de usuario para acceder al sistema</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {userTypes.map((userType) => (
             <Card key={userType.title} className="hover:shadow-lg transition-shadow duration-300 border-2 hover:border-blue-200">
               <CardHeader className="text-center pb-4">
